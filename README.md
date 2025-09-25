@@ -7,17 +7,19 @@ Simple implementation of an Event Bus using the Publish/Subscribe pattern. Whisp
 Whisper's event bus allows [publish/subscribe-style](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) communication between your microservices without requiring the components to explicitly be aware of each other, as shown in the following diagram:
 
 ![event-pubsub](./event-driven-communication.png)
+
 > Source: [.NET Microservices](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/)
 
 A trimmed down version of the above diagram is shown below:
 
 ![pubsub-basic](./publish-subscribe-basics.png)
+
 > Source: [.NET Microservices](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/)
 
 ## Installation
 
 ```bash
-go get github.com/10hourlabs/whisper
+go get github.com/theterminalguy/whisper
 ```
 
 ## Usage
@@ -33,8 +35,8 @@ import (
     "log"
     "time"
 
-    "github.com/10hourlabs/whisper"
-    "github.com/10hourlabs/whisper/google"
+    "github.com/theterminalguy/whisper"
+    "github.com/theterminalguy/whisper/google"
 )
 
 type HelloWorldEvent struct {}
@@ -80,7 +82,7 @@ func main() {
     go func() {
         if err := whisper.Listen(whisper.NewGooglePubSub(), conf) ; err != nil {
             log.Fatalf("failed to subscribe: %v", err)
-        }       
+        }
     }()
     whisper.Wait(time.Second * 5)
 }

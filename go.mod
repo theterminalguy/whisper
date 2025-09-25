@@ -1,4 +1,4 @@
-module github.com/10hourlabs/whisper
+module github.com/theterminalguy/whisper
 
 go 1.17
 
